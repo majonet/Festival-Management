@@ -2,6 +2,7 @@
 #include "exception.h"
 #include <list>
 using namespace std;
+#include <algorithm>
 void Manager::addEvent(Event m){
     cont_Events.insert({m.eventID, m});
 };
@@ -53,7 +54,22 @@ void Manager::findParticipant(int participantID){
         Etype_  x = static_cast<Etype_>(i);
         for (auto& y : cont_Events){
             if (y.second.eventType == x){
-                cout<<y.second.eventName<<endl;
+                cout<<y.second.eventName<<"  :  "<<y.second.eventType<<endl;
             }
         }}
  };
+
+void Manager::listEventsSortedByParticipantCount(){
+    map<int,string> ev_sort;
+    for (auto& y : cont_Events){
+        ev_sort.insert({y.second.registeredParticipants.size(),y.second.eventName});
+        }
+    vector<pair<int, string>> vec(ev_sort.begin(), ev_sort.end());
+    sort(vec.begin(), vec.end(), [](const pair<int, string>& a, const pair<int, string>& b) {
+        return a.first > b.first; 
+    });
+    for (const auto& p : vec) {
+        cout << p.first << " : " << p.second << endl;
+    }
+
+};
