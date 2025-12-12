@@ -6,7 +6,7 @@
 #include <iostream>
 using namespace std;
 #include "Participant.h"
-#include<map>
+#include<vector>
 enum Etype {ev1,ev2,ev2};
 
 class Event{
@@ -15,7 +15,8 @@ protected:
    int eventID;
    Etype eventType;
    int capacity;
-   map<int, string> registeredParticipants;
+   // map<int, Participant> registeredParticipants;
+   // vector<int> registeredParticipants; 
 public:
    Event(){};
    ~Event(){};
