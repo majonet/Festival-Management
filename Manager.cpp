@@ -1,5 +1,6 @@
 #include "Manager.h"
 #include "exception.h"
+#include <list>
 using namespace std;
 void Manager::addEvent(Event m){
     cont_Events.insert({m.eventID, m});
@@ -46,4 +47,13 @@ void Manager::findParticipant(int participantID){
     cout<<"participant find with name "<< se_par.name<<endl;
 }
 
-
+ void Manager::listEventsSortedByType(){
+    enum Etype_ {ev1,ev2,ev3,EtypeCount};
+    for (int i = 0; i < EtypeCount; ++i) {
+        Etype_  x = static_cast<Etype_>(i);
+        for (auto& y : cont_Events){
+            if (y.second.eventType == x){
+                cout<<y.second.eventName<<endl;
+            }
+        }}
+ };

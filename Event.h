@@ -7,7 +7,7 @@
 using namespace std;
 #include "Participant.h"
 #include<vector>
-enum Etype {ev1,ev2,ev2};
+enum Etype {ev1,ev2,ev3};
 
 class Event{
 public:
