@@ -16,8 +16,8 @@ public:
    Etype eventType;
    int capacity;
    map<int, Participant> registeredParticipants;
-   // vector<int> registeredParticipants; 
-   Event(){};
+   Event() : eventName(""), eventID(0), eventType(ev1), capacity(0) {}
+   Event(const string& name, int id, Etype type, int cap): eventName(name), eventID(id), eventType(type), capacity(cap) {}
    ~Event(){};
    
 };
