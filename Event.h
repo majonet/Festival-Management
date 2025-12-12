@@ -1,6 +1,3 @@
-// Event.h
-// تعریف کلاس Event با ویژگی‌های:
-//  eventName، eventID، eventType، capacity، registeredParticipants
 #include<string>
 #pragma once
 #include <iostream>

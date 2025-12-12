@@ -1,9 +1,9 @@
 #include<string>
 using namespace std;
-#include "Event.h"
+// #include "Event.h"
 #include<map>
 #pragma once
-
+class Event;
 class Participant{
 public:
    string name;

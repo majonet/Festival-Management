@@ -4,6 +4,9 @@
 using namespace std;
 #include <algorithm>
 void Manager::addEvent(Event m){
+    if (cont_Events.count(m.eventID)){
+       throw myerror("event id is exist change your event id");
+    }
     cont_Events.insert({m.eventID, m});
 };
 
@@ -23,12 +26,12 @@ void Manager::registerParticipantToEvent(int participantID,int eventID){
     Participant se_par;
     se_par=cont_Participants[participantID];
 
-    if (se_event.capacity<=se_event.registeredParticipants.size()) {
+    if (se_event.capacity==se_event.registeredParticipants.size()) {
     throw myerror("capacity event is full");
     } 
-    se_event.registeredParticipants.insert({se_par.participantID, se_par});
-    se_par.registeredEvents.insert({se_event.eventID,se_event});
-    cout<<"Participant "<<se_par.name<<"register in "<<se_event.eventName<<" event"<<endl;
+    cont_Events[eventID].registeredParticipants.insert({participantID, se_par});
+    cont_Participants[participantID].registeredEvents.insert({se_event.eventID,se_event});
+    cout<<"Participant "<<se_par.name<<" register in "<<se_event.eventName<<" event"<<endl;
 }
 
 void Manager::findEvent(int eventID){
@@ -48,7 +51,7 @@ void Manager::findParticipant(int participantID){
     cout<<"participant find with name "<< se_par.name<<endl;
 }
 
- void Manager::listEventsSortedByType(){
+void Manager::listEventsSortedByType(){
     enum Etype_ {ev1,ev2,ev3,EtypeCount};
     for (int i = 0; i < EtypeCount; ++i) {
         Etype_  x = static_cast<Etype_>(i);
