@@ -5,12 +5,11 @@ using namespace std;
 #pragma once
 //  name، participantID، registeredEvents
 class Participant{
-protected:
+public:
    string name;
    int participantID;
-   // map<int, Event> registeredEvents;
+   map<int, Event> registeredEvents;
    // vector<int> registeredEvents; 
-public:
    Participant(){};
    ~Participant(){};
 };

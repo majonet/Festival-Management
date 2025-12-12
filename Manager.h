@@ -18,8 +18,8 @@ protected:
 public:
   Manager(){};
   ~Manager(){};
-  void addEvent(Event);
-  void addParticipant(Participant);
+  void addEvent(Event m );
+  void addParticipant(Participant m);
   void registerParticipantToEvent(int participantID,int eventID);
   void findEvent(int eventID);
   void findParticipant(int participantID);

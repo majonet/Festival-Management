@@ -10,14 +10,13 @@ using namespace std;
 enum Etype {ev1,ev2,ev2};
 
 class Event{
-protected:
+public:
    string eventName;
    int eventID;
    Etype eventType;
    int capacity;
-   // map<int, Participant> registeredParticipants;
+   map<int, Participant> registeredParticipants;
    // vector<int> registeredParticipants; 
-public:
    Event(){};
    ~Event(){};
    
