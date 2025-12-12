@@ -7,10 +7,10 @@ using namespace std;
 
 int main() {
     Manager mgr;
-    Event e1{"Music Concert",1,ev1, 2};
-    Event e2{"Art Workshop",2,ev2, 3};
+    Event e1{"Music Concert",1,ev2, 2};
+    Event e2{"Art Workshop",2,ev1, 3};
     Event e3{"Tech Talk",3,ev3, 1};
-    Event e4{"Art Work",2,ev1, 3};
+    Event e4{"Art Work",5,ev1, 3};
     Event e5{"Art",4,ev1, 2};
 
     try {
@@ -61,21 +61,23 @@ int main() {
         cout<<"----------------------"<<endl;
     }
 
-    // try {
-    //     mgr.findParticipant(1);
-    //     mgr.findParticipant(3);
-    //     mgr.findParticipant(4);
-    // } catch (myerror& e) {
-    //     e.show_error();
-    // }
+    try {
+        mgr.findParticipant(1);
+        mgr.findParticipant(3);
+        mgr.findParticipant(4);
+    }catch (myerror& e) {
+        cout<<"ERROR :"<<endl;
+        e.show_error();
+        cout<<"----------------------"<<endl;
+    }
 
 
-    // cout << "Events sorted by type:" << endl;
-    // mgr.listEventsSortedByType();
+    cout << "Events sorted by type:" << endl;
+    mgr.listEventsSortedByType();
 
    
-    // cout << "Events sorted by participant count:" << endl;
-    // mgr.listEventsSortedByParticipantCount();
+    cout << "Events sorted by participant count:" << endl;
+    mgr.listEventsSortedByParticipantCount();
    
 
     return 0;

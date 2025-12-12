@@ -62,17 +62,40 @@ void Manager::listEventsSortedByType(){
         }}
  };
 
-void Manager::listEventsSortedByParticipantCount(){
-    map<int,string> ev_sort;
-    for (auto& y : cont_Events){
-        ev_sort.insert({y.second.registeredParticipants.size(),y.second.eventName});
-        }
-    vector<pair<int, string>> vec(ev_sort.begin(), ev_sort.end());
-    sort(vec.begin(), vec.end(), [](const pair<int, string>& a, const pair<int, string>& b) {
-        return a.first > b.first; 
-    });
-    for (const auto& p : vec) {
-        cout << p.first << " : " << p.second << endl;
+// void Manager::listEventsSortedByParticipantCount(){
+//     map<string,int> ev_sort;
+//     for (auto& y : cont_Events){
+//         ev_sort.insert({y.second.eventName,y.second.registeredParticipants.size()});
+//         }
+//     vector<pair<int, string>> vec(ev_sort.begin(), ev_sort.end());
+//     sort(vec.begin(), vec.end(), [](const pair<int, string>& a, const pair<int, string>& b) {
+//         return a.first > b.first; 
+//     });
+//     // for (const auto& p : vec) {
+//     //     cout << p.first << " : " << p.second << endl;
+//     // }
+//     for (const auto& p : ev_sort) {
+//         cout << p.first << " : " << p.second << endl;
+//     }
+
+// };
+void Manager::listEventsSortedByParticipantCount() {
+    map<string, int> ev_sort;
+    for (auto& y : cont_Events) {
+        ev_sort[y.second.eventName] = y.second.registeredParticipants.size();
     }
 
-};
+    vector<pair<int, string>> vec;
+    vec.reserve(ev_sort.size());
+
+    for (auto& p : ev_sort) {
+        vec.push_back({p.second, p.first});  
+    }
+    sort(vec.begin(), vec.end(),
+         [](const pair<int, string>& a, const pair<int, string>& b) {
+             return a.first > b.first;
+         });
+    for (const auto& p : vec) {
+        cout << p.second << " : " << p.first << endl;
+    }
+}
